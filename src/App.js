@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
 import { Navbar, NavbarBrand } from 'reactstrap';
+import Menu from './components/MenuComponent';
+import './App.css';
+
 
 class App extends Component {
   render() {
@@ -14,6 +16,7 @@ class App extends Component {
             </NavbarBrand>
           </div>
         </Navbar>
+        <Menu />
       </div>
     );
   }
