@@ -4,6 +4,7 @@ import { Card, CardImg, CardImgOverlay, CardTitle, CardText, CardBody} from 'rea
 class DishDetail extends Component {
     renderDish(dish){
         return (
+        
         <div className="col-12 col-md-5 m-1">
             <Card key={dish.id}>
             <CardImg width="100%" src={dish.image} alt={dish.name} />
@@ -15,6 +16,7 @@ class DishDetail extends Component {
                 </CardText>
             </Card>
         </div>
+        
         );}
     
     renderComments(comments){
@@ -23,7 +25,7 @@ class DishDetail extends Component {
                 return(
                     <li key={comment.id}>
                         <p>{comment.comment}</p>
-                        <p>{comment.author} , {comment.date}</p>
+                        <p>{comment.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
                     </li>
                 );
             })
@@ -47,9 +49,11 @@ class DishDetail extends Component {
     render() {
         if(this.props.dish != null){
         return (
+            <div className="container">
             <div className="row">
                 {this.renderDish(this.props.dish)}
                 {this.renderComments(this.props.dish.comments)}
+            </div>
             </div>
         );}
         else{
